@@ -97,7 +97,7 @@ const CartPanel = () => {
                   <img
                     src={item.image || 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=80&h=80&fit=crop'}
                     alt={item.name}
-                    onError={e => { e.target.style.display = 'none'; }}
+                    onError={e => { e.target.onerror = null; e.target.src = 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=80&h=80&fit=crop'; }}
                   />
                   <div className="amz-cart-item-body">
                     <h4>{item.name}</h4>

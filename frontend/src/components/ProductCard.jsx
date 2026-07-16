@@ -5,11 +5,14 @@ import { FiShoppingCart, FiChevronDown, FiChevronUp, FiChevronLeft, FiChevronRig
 
 const toRWF = (price) => `RWF ${Number(price).toLocaleString()}`;
 
+const FALLBACK_IMG = 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=400&fit=crop';
+
 const ProductCard = ({ item, health }) => {
   const { addToCart, cart, setSize } = useCart();
   const { t } = useLanguage();
   const [showDetails, setShowDetails] = useState(false);
   const [imgIdx, setImgIdx] = useState(0);
+  const [imgFailed, setImgFailed] = useState(false);
   const cartItem = cart[item.id];
 
   const images = item.images?.length > 0
@@ -47,10 +50,10 @@ const ProductCard = ({ item, health }) => {
           </>
         )}
         <img
-          src={images[imgIdx]}
+          src={imgFailed ? FALLBACK_IMG : images[imgIdx]}
           alt={item.name}
           loading="lazy"
-          onError={e => { e.target.style.display = 'none'; }}
+          onError={e => { if (!imgFailed) { setImgFailed(true); e.target.onerror = null; } else { e.target.style.display = 'none'; } }}
         />
         {item.featured && <span className="amz-badge">{t('Featured')}</span>}
         {healthScore !== undefined && (
