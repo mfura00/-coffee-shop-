@@ -1,6 +1,8 @@
-console.log('BOOT: Node', process.version, 'PID', process.pid);
-process.on('uncaughtException', (err) => { console.error('UNCAUGHT:', err); process.exit(1); });
-process.on('unhandledRejection', (err) => { console.error('UNHANDLED:', err); process.exit(1); });
+const fs = require('fs');
+fs.writeFileSync('/tmp/boot.txt', 'BOOT at ' + new Date().toISOString() + '\n');
+process.stderr.write('BOOT: Node ' + process.version + ' PID ' + process.pid + '\n');
+process.on('uncaughtException', (err) => { process.stderr.write('UNCAUGHT: ' + err.stack + '\n'); setTimeout(() => process.exit(1), 1000); });
+process.on('unhandledRejection', (err) => { process.stderr.write('UNHANDLED: ' + err + '\n'); setTimeout(() => process.exit(1), 1000); });
 
 const express = require('express');
 const cors = require('cors');
