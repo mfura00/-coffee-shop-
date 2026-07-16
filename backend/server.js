@@ -1,3 +1,4 @@
+console.log('BOOT: Node', process.version, 'PID', process.pid);
 process.on('uncaughtException', (err) => { console.error('UNCAUGHT:', err); process.exit(1); });
 process.on('unhandledRejection', (err) => { console.error('UNHANDLED:', err); process.exit(1); });
 
