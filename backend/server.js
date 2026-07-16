@@ -11,10 +11,13 @@ const { Pool } = require('pg');
 
 // ── DB Init ──
 const initDb = async () => {
-  const pool = new Pool({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } });
+  console.log('Connecting to database...');
+  const pool = new Pool({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false }, connectionTimeoutMillis: 10000 });
   const schema = fs.readFileSync(path.join(__dirname, 'config', 'schema.sql'), 'utf8');
   const statements = schema.split(';').filter(s => s.trim());
-  for (const stmt of statements) await pool.query(stmt);
+  for (const stmt of statements) {
+    try { await pool.query(stmt); } catch (e) { console.log('Schema stmt skipped:', e.message); }
+  }
   await pool.end();
   console.log('Database tables ready');
 };
@@ -127,6 +130,12 @@ app.use((err, req, res, next) => {
 
 // ── Start ──
 const PORT = process.env.PORT || 5000;
+console.log('Starting server...');
+console.log('DATABASE_URL set:', !!process.env.DATABASE_URL);
 initDb().then(() => {
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-}).catch(err => { console.error('Failed to init DB:', err.message); process.exit(1); });
+}).catch(err => {
+  console.error('Failed to init DB:', err.message);
+  console.error('Full error:', err);
+  app.listen(PORT, () => console.log(`Server running on port ${PORT} (without DB init)`));
+});
