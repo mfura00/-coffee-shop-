@@ -7,6 +7,7 @@ exports.getMenuItems = async (req, res) => {
     if (req.query.category) { sql += ' AND category = $' + (params.length + 1); params.push(req.query.category); }
     if (req.query.featured) { sql += ' AND featured = $' + (params.length + 1); params.push(req.query.featured === 'true'); }
     if (req.query.available !== undefined) { sql += ' AND available = $' + (params.length + 1); params.push(req.query.available === 'true'); }
+    if (req.query.search) { sql += ' AND (LOWER(name) LIKE $' + (params.length + 1) + ' OR LOWER(description) LIKE $' + (params.length + 2) + ')'; params.push('%' + req.query.search.toLowerCase() + '%', '%' + req.query.search.toLowerCase() + '%'); }
     sql += ' ORDER BY name';
     const result = await pool.query(sql, params);
     res.json(result.rows);

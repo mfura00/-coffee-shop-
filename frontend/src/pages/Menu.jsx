@@ -25,9 +25,11 @@ const Menu = () => {
 
   useEffect(() => {
     const cat = searchParams.get('category') || '';
+    const searchQ = searchParams.get('search') || '';
     setCategory(cat);
     const params = { available: true };
     if (cat) params.category = cat;
+    if (searchQ) params.search = searchQ;
     Promise.all([
       menuAPI.getAll(params),
       healthAPI.getAll(),
@@ -44,7 +46,7 @@ const Menu = () => {
   return (
     <div className="amz-page">
       <div className="amz-menu-top">
-        <h1>{t('Coffee & Pastries')}</h1>
+        <h1>{searchParams.get('search') ? `"${searchParams.get('search')}"` : t('Coffee & Pastries')}</h1>
         <p>{items.length} {t('results')}</p>
       </div>
 
