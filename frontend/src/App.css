@@ -64,6 +64,9 @@ body {
   color: var(--amz-text);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  overscroll-behavior: none;
 }
 a { text-decoration: none; color: var(--amz-link); }
 a:hover { color: var(--amz-link-hover); }
@@ -1188,6 +1191,124 @@ input, textarea, select { font-family: inherit; font-size: inherit; }
   .inline-sub-form { flex-direction: column; }
   .contact-email-direct p { font-size: 0.85rem; }
   .amz-search { max-width: 100%; }
+}
+
+/* ===== iPhone & Small Phone (320px - 430px) ===== */
+@media only screen and (max-width: 430px) and (-webkit-min-device-pixel-ratio: 2) {
+  body { padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom); }
+  .amz-header { padding: 0 12px; }
+  .amz-header-row { height: 52px; gap: 6px; }
+  .amz-logo-text { font-size: 0.95rem; }
+  .amz-search { margin: 0 6px; }
+  .amz-search input { padding: 10px; font-size: 0.9rem; }
+  .amz-search button { width: 40px; }
+  .amz-subnav { padding: 0 12px; top: 52px; }
+  .amz-subnav-link { padding: 8px 12px; font-size: 0.82rem; }
+  .amz-hero { min-height: 200px; }
+  .amz-hero-content { padding: 24px 16px; }
+  .amz-hero-text h1 { font-size: 1.5rem; margin-bottom: 8px; }
+  .amz-hero-text p { font-size: 0.88rem; margin-bottom: 14px; }
+  .amz-btn-hero { padding: 12px 28px; font-size: 0.9rem; }
+  .amz-page { padding: 12px; }
+  .amz-section { padding: 14px; margin: 10px 0; border-radius: 6px; }
+  .amz-section h2 { font-size: 1.1rem; }
+  .amz-home-content { padding: 0 10px; }
+  .amz-product-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .amz-product-card { border-radius: 6px; }
+  .amz-product-img-wrap { height: 140px; }
+  .amz-product-body { padding: 8px 10px 12px; }
+  .amz-product-title { font-size: 0.82rem; line-height: 1.3; }
+  .amz-product-desc { font-size: 0.75rem; }
+  .amz-price { font-size: 1rem; }
+  .amz-btn-add { font-size: 0.78rem; padding: 10px 12px; border-radius: 6px; min-height: 38px; }
+  .amz-product-row .amz-product-card { min-width: 150px; max-width: 160px; }
+  .amz-category-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .amz-cat-card { height: 100px; border-radius: 6px; }
+  .amz-cat-card span { font-size: 0.78rem; padding: 6px 8px; }
+  .amz-why-grid { grid-template-columns: 1fr; }
+  .amz-why-card { padding: 14px 12px; text-align: center; }
+  .amz-why-card h3 { font-size: 0.95rem; }
+  .amz-why-card p { font-size: 0.78rem; }
+  .amz-subscribe-card { padding: 16px 12px; border-radius: 8px; }
+  .amz-subscribe-card h3 { font-size: 1rem; }
+  .amz-subscribe-form { flex-direction: column; gap: 8px; max-width: 100%; }
+  .amz-subscribe-form input { padding: 12px; font-size: 0.9rem; }
+  .amz-subscribe-form button { width: 100%; padding: 12px; font-size: 0.9rem; }
+  .amz-footer-top { font-size: 0.82rem; padding: 12px; }
+  .amz-footer-links { grid-template-columns: 1fr; gap: 20px; padding: 24px 16px; }
+  .amz-footer-col h4 { font-size: 0.95rem; margin-bottom: 8px; }
+  .amz-footer-col a, .amz-footer-col p { font-size: 0.8rem; }
+  .amz-footer-bottom { padding: 12px; }
+  .amz-footer-copy { font-size: 0.72rem; }
+  .amz-page-hero { padding: 24px 16px; margin-bottom: 16px; }
+  .amz-page-hero h1 { font-size: 1.4rem; }
+  .amz-page-hero p { font-size: 0.85rem; }
+  .amz-cart-panel { width: 100vw; }
+  .amz-cart-header { padding: 12px 14px; }
+  .amz-cart-header h2 { font-size: 1.05rem; }
+  .amz-cart-items { padding: 8px 14px; }
+  .amz-cart-item { gap: 10px; padding: 10px 0; }
+  .amz-cart-item img { width: 48px; height: 48px; }
+  .amz-cart-item-body h4 { font-size: 0.82rem; }
+  .amz-cart-footer { padding: 12px 14px; }
+  .amz-btn-checkout { padding: 14px; font-size: 0.95rem; border-radius: 24px; min-height: 48px; }
+  .auth-page { padding: 40px 16px; }
+  .auth-card { padding: 24px 18px; margin: 0; max-width: 100%; border-radius: 8px; }
+  .auth-card h2 { font-size: 1.3rem; }
+  .profile-card { padding: 24px 18px; margin: 0; max-width: 100%; }
+  .orders-list { padding: 12px 0 32px; }
+  .order-card { padding: 12px 14px; }
+  .order-id { font-size: 0.85rem; }
+  .order-item-row { font-size: 0.82rem; }
+  .contact-grid { grid-template-columns: 1fr; gap: 20px; }
+  .contact-form { padding: 20px 16px; }
+  .form-group input, .form-group textarea { padding: 12px; font-size: 0.9rem; }
+  .admin-page { padding: 0 10px; }
+  .admin-tab { padding: 8px 12px; font-size: 0.75rem; }
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .stat-card { padding: 12px; gap: 10px; }
+  .stat-card h3 { font-size: 1.1rem; }
+  .stat-card p { font-size: 0.7rem; }
+  .admin-table { font-size: 0.72rem; }
+  .admin-table th, .admin-table td { padding: 8px 10px; }
+  .health-item-card { padding: 12px; }
+  .health-score { width: 48px; height: 48px; }
+  .health-stats { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .health-person-wrap { flex-direction: column; align-items: center; text-align: center; }
+  .amz-guest-form input { padding: 12px; font-size: 0.9rem; }
+  .amz-sub-popup { padding: 20px 16px; margin: 0 8px; }
+  .amz-sub-popup h3 { font-size: 1.2rem; }
+  .order-guide-modal { margin: 10px; max-height: 85vh; }
+  .order-guide-header { padding: 16px; }
+  .order-guide-step { padding: 12px; gap: 10px; }
+}
+
+/* ===== iPhone SE & very small phones (320px - 375px) ===== */
+@media only screen and (max-width: 375px) {
+  .amz-header-row { height: 48px; gap: 4px; }
+  .amz-logo-text { font-size: 0.85rem; }
+  .amz-search { margin: 0 4px; }
+  .amz-search input { padding: 8px; font-size: 0.82rem; }
+  .amz-product-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
+  .amz-product-img-wrap { height: 120px; }
+  .amz-product-title { font-size: 0.78rem; }
+  .amz-price { font-size: 0.92rem; }
+  .amz-btn-add { font-size: 0.72rem; padding: 9px 10px; }
+  .amz-hero-text h1 { font-size: 1.25rem; }
+  .amz-hero-text p { font-size: 0.82rem; }
+  .amz-footer-links { padding: 20px 14px; }
+}
+
+/* ===== Touch-friendly tap targets ===== */
+@media (hover: none) and (pointer: coarse) {
+  .amz-btn-add, .amz-btn-checkout, .amz-btn-hero, .amz-icon-btn,
+  .amz-cart-btn, .amz-mobile-menu, .amz-cat-pill, .amz-view-btn,
+  .amz-nav-item, .amz-subnav-link, .order-guide-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .amz-cart-qty button { width: 36px; height: 36px; }
+  .amz-star { font-size: 1rem; }
 }
 
 /* ===== Language Selector ===== */
