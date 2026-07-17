@@ -1,15 +1,8 @@
-const fs = require('fs');
-fs.writeFileSync('/tmp/boot.txt', 'BOOT at ' + new Date().toISOString() + '\n');
-process.stderr.write('BOOT: Node ' + process.version + ' PID ' + process.pid + '\n');
-process.on('uncaughtException', (err) => { process.stderr.write('UNCAUGHT: ' + err.stack + '\n'); setTimeout(() => process.exit(1), 1000); });
-process.on('unhandledRejection', (err) => { process.stderr.write('UNHANDLED: ' + err + '\n'); setTimeout(() => process.exit(1), 1000); });
-
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
-const fs = require('fs');
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
