@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CartPanel from './components/CartPanel';
 import OrderGuide from './components/OrderGuide';
+import WhatsAppChat from './components/WhatsAppChat';
 import ProtectedRoute from './components/ProtectedRoute';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -34,6 +35,7 @@ const App = () => (
     </main>
     <CartPanel />
     <OrderGuide />
+    <WhatsAppChat />
     <Footer />
   </div>
 );
